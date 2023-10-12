@@ -1,0 +1,17 @@
+class User:
+    def __init__(self, nom, pwd):
+        self.nom = nom
+        self.pwd = pwd
+u1 = User("jose", "1234")
+u2 = User("maria", "5678")
+ususarios = [u1, u2]
+n = input("Ingrese su usuario: ")
+p = input("Ingrese su contraseña: ")
+k = 0
+for i in range(len(ususarios)):
+    if ususarios[i].nom == n and ususarios[i].pwd == p:
+        print(ususarios[i].nom, "- Bienvenid@ al programa")
+        k=1
+        break
+if k==0:
+    print("Usuario o contraseña invalidos.")
