@@ -3,7 +3,7 @@ import random
 class Seccion_login:
 
     def __init__(self):
-        self.user_list = {"juan": "juan123", "Pamela": "nashe123"}
+        self.user_list = {"juan": "juan123", "Pamela": "nashe123","Kiliam":"klmm1"}
 
     def buscarUsuario(self, nombre_usuario):
         if nombre_usuario in self.user_list:
@@ -19,10 +19,9 @@ class Seccion_login:
         lista_tokens=[]
         largo_str = 8
         for x in range(2):
-           tokens ="".join( random.choice(string.ascii_letters + string.digits)for _ in range(largo_str))
-        lista_tokens.append(tokens)
-        return "token 1 ",{lista_tokens[0]} # se supone que deberia sacar el otro token tambien
-
+           vtokens ="".join( random.choice(string.ascii_letters + string.digits)for _ in range(largo_str))
+           lista_tokens.append(vtokens)
+        return lista_tokens
 
     def L_facebook(self, usuario, contraseña):
         self.user_entrada = usuario
@@ -36,17 +35,24 @@ class Seccion_login:
         else:
             return "Usuario y/o contraseña incorrecto"
 
-    def L_google(self, usuario, contraseña):
+    def L_google(self, usuario, contraseña,token_1,token_2):
         self.user_entrada = usuario
         self.pass_entrada = contraseña
 
         self.e_user = self.buscarUsuario(self.user_entrada)
         self.e_pass = self.buscarContraseña(self.pass_entrada)
+        self.Etokens= self.Tokens()
+        self.etoken_1 = self.Etokens[0]
+        self.etoken_2 = self.Etokens[1]
 
-        if self.user_entrada == self.e_user and self.pass_entrada == self.e_pass:
-            return "Este usuario y contraseña es correcto"
+        if self.etoken_1 == token_1 and self.etoken_2 == token_2 :
+            print ("tokens adecuados")
+            if self.user_entrada == self.e_user and self.pass_entrada == self.e_pass:
+                return "Este usuario y contraseña es correcto"
+            else:
+                return "Usuario y/o contraseña incorrecto"
         else:
-            return "Usuario y/o contraseña incorrecto"
+            print ("Uno de los tokens no es correcto")  
 
 
         
